@@ -5,9 +5,7 @@
  */
 package br.JPSistemas.SistemaFuncionario.apresentacao;
 
-import br.JPSistemas.SistemaFuncionario.entidade.Funcionario;
 import br.JPSistemas.SistemaFuncionario.entidade.Gerente;
-import br.JPSistemas.SistemaFuncionario.negocio.FuncionarioBO;
 import br.JPSistemas.SistemaFuncionario.negocio.GerenteBO;
 import br.JPSistemas.SistemaFuncionario.negocio.ListaFuncionariosVaziaException;
 import java.text.DecimalFormat;
