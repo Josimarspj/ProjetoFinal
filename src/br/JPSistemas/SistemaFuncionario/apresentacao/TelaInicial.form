@@ -23,7 +23,7 @@
             <MenuItem class="javax.swing.JMenuItem" name="mnuLogin">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_go.png"/>
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/door_in.png"/>
                 </Property>
                 <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
@@ -153,6 +153,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnuRelatoriosFuncionarios">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/file_acrobat.gif"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Relatorios de Funcion&#xe1;rios por Cargo"/>
               </Properties>
               <Events>
@@ -161,6 +164,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuRelatoriosCargos">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/file_acrobat.gif"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Relatorios de Cargos por Departamento"/>
               </Properties>
               <Events>
@@ -185,6 +191,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnuAlterarCargo">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/paste_plain.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cargos"/>
               </Properties>
               <Events>
@@ -221,6 +230,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuAlterarGerente">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/users_suit.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gerentes"/>
               </Properties>
               <Events>
@@ -245,19 +257,28 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="munGraficoFuncionarioCargo">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/chart_pie.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gr&#xe1;fico de Funcionarios por Cargo"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="munGraficoFuncionarioCargoActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="munGraficoCargoDepartamento">
+            <MenuItem class="javax.swing.JMenuItem" name="mnuGraficoCargoDepartamento">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/chart_pie.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gr&#xe1;fico de Cargos por Departamento"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="munGraficoCargoDepartamentoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuGraficoCargoDepartamentoActionPerformed"/>
               </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -8,12 +8,9 @@ package br.JPSistemas.SistemaFuncionario.apresentacao;
 import br.JPSistemas.SistemaFuncionario.entidade.Cargo;
 import br.JPSistemas.SistemaFuncionario.entidade.Departamento;
 import br.JPSistemas.SistemaFuncionario.entidade.Gerente;
-import br.JPSistemas.SistemaFuncionario.negocio.CPFJaCadastradoException;
 import br.JPSistemas.SistemaFuncionario.negocio.DepartamentoBO;
-import br.JPSistemas.SistemaFuncionario.negocio.DepartamentoJaContemGerenteException;
 import br.JPSistemas.SistemaFuncionario.negocio.GerenteBO;
 import br.JPSistemas.SistemaFuncionario.negocio.ListaDepartamentoVaziaException;
-import br.JPSistemas.SistemaFuncionario.negocio.UsuarioJaCadatradoException;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -43,10 +40,20 @@ public class TelaAlterarGerente extends javax.swing.JPanel implements AbaSelecio
         departamento = new Departamento();
         cargos = new ArrayList<Cargo>();
         departamentos = new ArrayList<Departamento>();
-        this.gerente = gerente;
         inicial= telaInicial;
+        this.gerente = new Gerente();
+        copiarGerente(gerente);
     }
 
+    private void copiarGerente(Gerente gerente){
+        this.gerente.setId(gerente.getId());
+        this.gerente.setNome(gerente.getNome());
+        this.gerente.setCpf(gerente.getCpf());
+        this.gerente.setRg(gerente.getRg());
+        this.gerente.setDataNascimento(gerente.getDataNascimento());
+        this.gerente.setUsuario(gerente.getUsuario());
+        this.gerente.setDepartamento(gerente.getDepartamento());
+    }
     public void carregarListaDepartamento() {
         try {
             DepartamentoBO departamentoBO = new DepartamentoBO();
@@ -282,7 +289,6 @@ public class TelaAlterarGerente extends javax.swing.JPanel implements AbaSelecio
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         try {
-            Gerente gerenteAntigo = gerente;
             lerDadosTela();
             camposObrigatorios();
             GerenteBO gerenteBO = new GerenteBO();
@@ -292,27 +298,12 @@ public class TelaAlterarGerente extends javax.swing.JPanel implements AbaSelecio
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.INFORMATION_MESSAGE);
             inicial.tpPrincipal.remove(inicial.tpPrincipal.getSelectedIndex());
         }catch(CamposObrigatoriosException ex){
-            String titulo = "Erro Alterar ao Alterar de Gerente";
+            String titulo = "Erro ao Alterar de Gerente";
             String mensagem = "Campo(s) Obrigatório(s) Não Preenchido(s)!";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(TelaCadastroDepartamento.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (DepartamentoJaContemGerenteException ex) {
-            String titulo = "Erro Alterar ao Alterar de Gerente";
-            String mensagem = "Departamento já contem Gerente Desgninado!";
-            JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(TelaAlterarGerente.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (CPFJaCadastradoException ex) {
-            String titulo = "Erro Alterar ao Alterar de Gerente";
-            String mensagem = "CPF de Gerente Ja Cadastrado em um Departamento!";
-            JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(TelaAlterarGerente.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (UsuarioJaCadatradoException ex) {
-            String titulo = "Erro Alterar ao Alterar de Gerente";
-            String mensagem = "Nome de Usuário Ja Cadastrado!";
-            JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(TelaAlterarGerente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
-            String titulo = "Erro Alterar ao Alterar de Gerente";
+            String titulo = "Erro ao Alterar de Gerente";
             String mensagem = "Ocorreu um erro inesperado, Favor entra em contato com o administrador";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(TelaAlterarGerente.class.getName()).log(Level.SEVERE, null, e);
@@ -401,7 +392,7 @@ public class TelaAlterarGerente extends javax.swing.JPanel implements AbaSelecio
     private void camposObrigatorios() {
         if (txtNome.getText().isEmpty() || txtCpf.getText().isEmpty()
                 || txtRg.getText().isEmpty() || txtDataNascimento.getText().isEmpty()
-                || txtLogin.getText().isEmpty() || txtSenha.getText().isEmpty()|| cbxDepartamento.getModel().getSize()==0) {
+                || txtLogin.getText().isEmpty() || txtSenha.getText().isEmpty()) {
             throw new CamposObrigatoriosException();
         }
     }

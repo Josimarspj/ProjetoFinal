@@ -125,7 +125,7 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuAlterarGerente = new javax.swing.JMenuItem();
         mnuGraficos = new javax.swing.JMenu();
         munGraficoFuncionarioCargo = new javax.swing.JMenuItem();
-        munGraficoCargoDepartamento = new javax.swing.JMenuItem();
+        mnuGraficoCargoDepartamento = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Funcionários");
@@ -177,7 +177,7 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user.png"))); // NOI18N
         mnuUsuario.setText("Usuário");
 
-        mnuLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_go.png"))); // NOI18N
+        mnuLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/door_in.png"))); // NOI18N
         mnuLogin.setText("Login");
         mnuLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -260,6 +260,7 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/file_acrobat.gif"))); // NOI18N
         mnuRelatorios.setText("Relatorios");
 
+        mnuRelatoriosFuncionarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/file_acrobat.gif"))); // NOI18N
         mnuRelatoriosFuncionarios.setText("Relatorios de Funcionários por Cargo");
         mnuRelatoriosFuncionarios.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,6 +269,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuRelatorios.add(mnuRelatoriosFuncionarios);
 
+        mnuRelatoriosCargos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/file_acrobat.gif"))); // NOI18N
         mnuRelatoriosCargos.setText("Relatorios de Cargos por Departamento");
         mnuRelatoriosCargos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -281,6 +283,7 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/application_view_list.png"))); // NOI18N
         mnuConsulta.setText("Consulta");
 
+        mnuAlterarCargo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/paste_plain.png"))); // NOI18N
         mnuAlterarCargo.setText("Cargos");
         mnuAlterarCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -307,6 +310,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuConsulta.add(mnuAlterarFuncionario);
 
+        mnuAlterarGerente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/users_suit.png"))); // NOI18N
         mnuAlterarGerente.setText("Gerentes");
         mnuAlterarGerente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -320,6 +324,7 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuGraficos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/chart_pie.png"))); // NOI18N
         mnuGraficos.setText("Gráficos");
 
+        munGraficoFuncionarioCargo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/chart_pie.png"))); // NOI18N
         munGraficoFuncionarioCargo.setText("Gráfico de Funcionarios por Cargo");
         munGraficoFuncionarioCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -328,13 +333,14 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuGraficos.add(munGraficoFuncionarioCargo);
 
-        munGraficoCargoDepartamento.setText("Gráfico de Cargos por Departamento");
-        munGraficoCargoDepartamento.addActionListener(new java.awt.event.ActionListener() {
+        mnuGraficoCargoDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/chart_pie.png"))); // NOI18N
+        mnuGraficoCargoDepartamento.setText("Gráfico de Cargos por Departamento");
+        mnuGraficoCargoDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                munGraficoCargoDepartamentoActionPerformed(evt);
+                mnuGraficoCargoDepartamentoActionPerformed(evt);
             }
         });
-        mnuGraficos.add(munGraficoCargoDepartamento);
+        mnuGraficos.add(mnuGraficoCargoDepartamento);
 
         mnuPrincipal.add(mnuGraficos);
 
@@ -471,7 +477,7 @@ public class TelaInicial extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_mnuAlterarFuncionarioActionPerformed
 
-    private void munGraficoCargoDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_munGraficoCargoDepartamentoActionPerformed
+    private void mnuGraficoCargoDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuGraficoCargoDepartamentoActionPerformed
         try {
             DepartamentoBO departamentoBO = new DepartamentoBO();
             List<Departamento> departamentos = departamentoBO.buscarTodos();
@@ -500,7 +506,7 @@ public class TelaInicial extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao exibir Gráfico.", "Erro", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(TelaInicial.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_munGraficoCargoDepartamentoActionPerformed
+    }//GEN-LAST:event_mnuGraficoCargoDepartamentoActionPerformed
 
     private void mnuAlterarGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAlterarGerenteActionPerformed
         adicionarTab("Gerentes Cadastrados", telaConsultaGerente);
@@ -575,6 +581,7 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuCadastroFuncionario;
     public javax.swing.JMenu mnuCadastroGerente;
     public javax.swing.JMenu mnuConsulta;
+    public javax.swing.JMenuItem mnuGraficoCargoDepartamento;
     public javax.swing.JMenu mnuGraficos;
     public javax.swing.JMenuItem mnuLogin;
     private javax.swing.JMenuBar mnuPrincipal;
@@ -583,7 +590,6 @@ public class TelaInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem mnuRelatoriosFuncionarios;
     public javax.swing.JMenuItem mnuSair;
     private javax.swing.JMenu mnuUsuario;
-    private javax.swing.JMenuItem munGraficoCargoDepartamento;
     private javax.swing.JMenuItem munGraficoFuncionarioCargo;
     public javax.swing.JPanel plnLogin;
     public javax.swing.JTabbedPane tpPrincipal;

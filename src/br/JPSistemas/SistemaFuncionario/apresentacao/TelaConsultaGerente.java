@@ -143,8 +143,7 @@ public class TelaConsultaGerente extends javax.swing.JPanel implements AbaSeleci
         int linhaSelecionada = this.tblGerentes.getSelectedRow();
         Gerente gerente = this.gerentes.get(linhaSelecionada);
         telaAlterarGerente = new TelaAlterarGerente(gerente,inicial);
-        inicial.adicionarTab("Alterar Gerente", telaAlterarGerente);
-       
+        inicial.adicionarTab("Alterar Gerente", telaAlterarGerente);  
     }//GEN-LAST:event_btnAlterarActionPerformed
 
     private void exibirDadosTabela() {

@@ -10,9 +10,6 @@ import br.JPSistemas.SistemaFuncionario.entidade.Gerente;
 import br.JPSistemas.SistemaFuncionario.negocio.DiretorBO;
 import br.JPSistemas.SistemaFuncionario.negocio.GerenteBO;
 import br.JPSistemas.SistemaFuncionario.negocio.UsuarioInvalidoException;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -54,9 +51,19 @@ public class TelaLogin extends javax.swing.JFrame {
         setTitle("Sistema de Funcionários - Login");
         setExtendedState(-1);
         setType(java.awt.Window.Type.UTILITY);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowActivated(java.awt.event.WindowEvent evt) {
                 formWindowActivated(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
             }
         });
 
@@ -71,6 +78,11 @@ public class TelaLogin extends javax.swing.JFrame {
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSenhaActionPerformed(evt);
+            }
+        });
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
             }
         });
 
@@ -171,11 +183,24 @@ public class TelaLogin extends javax.swing.JFrame {
     private void formWindowActivated(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowActivated
         // TODO add your handling code here:
     }//GEN-LAST:event_formWindowActivated
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+        
+    }//GEN-LAST:event_formMouseEntered
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        
+    }//GEN-LAST:event_formKeyPressed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+       
+    }//GEN-LAST:event_txtSenhaKeyPressed
     public void habilitarTelaDiretor() {
         inicial.setTitle("Sistema de Funcionário [Usuario Logado["+inicial.diretor.getUsuario()+"]]");
         inicial.mnuConsulta.setVisible(true);
         inicial.mnuCadastro.setVisible(true);
         inicial.mnuRelatorios.setVisible(true);
+        inicial.mnuGraficoCargoDepartamento.setVisible(true);
         inicial.plnLogin.setVisible(true);
         inicial.lbNomeLogin.setText(inicial.diretor.getUsuario());
         inicial.mnuSair.setVisible(true);
@@ -202,6 +227,7 @@ public class TelaLogin extends javax.swing.JFrame {
         inicial.mnuAlterarGerente.setVisible(false);
         inicial.mnuGraficos.setVisible(true);
         inicial.telaConsultaFuncionario.btnExcluir.setVisible(false);
+        inicial.mnuGraficoCargoDepartamento.setVisible(false);
     }
     /**
      * @param args the command line arguments

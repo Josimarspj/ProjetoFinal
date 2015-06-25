@@ -76,10 +76,10 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="200">
+		<band height="300">
 			<pieChart>
 				<chart>
-					<reportElement x="100" y="11" width="336" height="189" uuid="6d980535-6e51-41f0-b5e7-02ffbdd80c59"/>
+					<reportElement x="10" y="25" width="545" height="275" uuid="6d980535-6e51-41f0-b5e7-02ffbdd80c59"/>
 					<chartTitle/>
 					<chartSubtitle/>
 					<chartLegend/>

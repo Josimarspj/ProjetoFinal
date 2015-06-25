@@ -39,7 +39,18 @@ public class TelaAlterarFuncionario extends javax.swing.JPanel implements AbaSel
         cargos = new ArrayList<Cargo>();
         departamentos = new ArrayList<Departamento>();
         inicial = telaInicial;
-        this.funcionario = funcionario;
+        this.funcionario = new Funcionario();
+        copiarFuncionario(funcionario);
+    }
+
+    private void copiarFuncionario(Funcionario Funcionario) {
+        this.funcionario.setId(Funcionario.getId());
+        this.funcionario.setNome(Funcionario.getNome());
+        this.funcionario.setCpf(Funcionario.getCpf());
+        this.funcionario.setRg(Funcionario.getRg());
+        this.funcionario.setDataNascimento(Funcionario.getDataNascimento());
+        this.funcionario.setCargo(Funcionario.getCargo());
+        this.funcionario.setDepartamento(Funcionario.getCargo().getDepartamento());
     }
 
     public void carregarListaDepartamento() {
@@ -64,6 +75,8 @@ public class TelaAlterarFuncionario extends javax.swing.JPanel implements AbaSel
             Logger.getLogger(TelaAlterarFuncionario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -126,12 +139,14 @@ public class TelaAlterarFuncionario extends javax.swing.JPanel implements AbaSel
             }
         });
 
+        cbxCargo.setEnabled(false);
         cbxCargo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 cbxCargoMouseMoved(evt);
             }
         });
 
+        cbxDepartamento.setEnabled(false);
         cbxDepartamento.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 cbxDepartamentoItemStateChanged(evt);
@@ -411,7 +426,6 @@ public class TelaAlterarFuncionario extends javax.swing.JPanel implements AbaSel
 
     @Override
     public void OnAbaSelecionada() {
-        cbxDepartamento.removeAllItems();
         cbxCargo.removeAllItems();
         carregarListaDepartamento();
         carregarListaCargos();

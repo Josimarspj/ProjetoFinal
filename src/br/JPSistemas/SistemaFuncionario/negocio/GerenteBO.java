@@ -92,6 +92,8 @@ public class GerenteBO {
     public void alterar(Gerente gerente) throws Exception {
         DepartamentoDAO departamentoDAO = new DepartamentoDAO();
         GerenteDAO gerenteDAO = new GerenteDAO();
+        String senha = gerente.getSenha();
+        gerente.setSenha(senhaMD5(senha));
         gerenteDAO.alterar(gerente);
     }
 
