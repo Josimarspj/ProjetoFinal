@@ -152,7 +152,7 @@ public class TelaCadastroFuncionario extends javax.swing.JPanel implements AbaSe
             }
         });
 
-        jLabel8.setText("Departamento");
+        jLabel8.setText("Departamento*");
 
         jLabel6.setText("* Campos Obrigatórios");
 

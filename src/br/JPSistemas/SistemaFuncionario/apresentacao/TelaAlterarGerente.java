@@ -14,7 +14,6 @@ import br.JPSistemas.SistemaFuncionario.negocio.DepartamentoJaContemGerenteExcep
 import br.JPSistemas.SistemaFuncionario.negocio.GerenteBO;
 import br.JPSistemas.SistemaFuncionario.negocio.ListaDepartamentoVaziaException;
 import br.JPSistemas.SistemaFuncionario.negocio.UsuarioJaCadatradoException;
-import java.sql.Date;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -28,7 +27,7 @@ import javax.swing.JOptionPane;
  *
  * @author JOSIMAR
  */
-public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSelecionada {
+public class TelaAlterarGerente extends javax.swing.JPanel implements AbaSelecionada {
 
     Gerente gerente;
     Departamento departamento;
@@ -39,13 +38,13 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
     /**
      * Creates new form TelaCadastroFuncionario
      */
-    public TelaCadastroGerente(TelaInicial telaInicial) {
+    public TelaAlterarGerente(Gerente gerente, TelaInicial telaInicial) {
         initComponents();
-        gerente = new Gerente();
         departamento = new Departamento();
         cargos = new ArrayList<Cargo>();
         departamentos = new ArrayList<Departamento>();
-        inicial=telaInicial;
+        this.gerente = gerente;
+        inicial= telaInicial;
     }
 
     public void carregarListaDepartamento() {
@@ -59,11 +58,10 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
         } catch (ListaDepartamentoVaziaException ex) {
             String titulo = "Lista de Departamento";
             String mensagem = "Lista de Departamento Vazia, Cadastre um Departemnto e seus cargos para Realizar o Cadastro do Funcionario";
-            inicial.tpPrincipal.remove(inicial.tpPrincipal.getSelectedIndex());
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(TelaCadastroGerente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaAlterarGerente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            Logger.getLogger(TelaCadastroGerente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaAlterarGerente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -95,9 +93,11 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
         txtCargo = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtSalario = new javax.swing.JFormattedTextField();
+        txtCodigo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
 
-        jLabel1.setText("Nome *");
+        jLabel1.setText("Nome*");
 
         jLabel2.setText("CPF *");
 
@@ -106,13 +106,14 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
+        txtCpf.setEnabled(false);
         txtCpf.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCpfActionPerformed(evt);
             }
         });
 
-        jLabel3.setText("RG*");
+        jLabel3.setText("RG *");
 
         try {
             txtDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
@@ -120,20 +121,22 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
             ex.printStackTrace();
         }
 
-        jLabel4.setText("Data de Nascimento *");
+        jLabel4.setText("Data de Nascimento*");
 
-        jLabel5.setText("Cargo");
+        jLabel5.setText("Cargo*");
 
-        btnSalvar.setText("Salvar");
+        btnSalvar.setText("Alterar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSalvarActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Login*");
+        jLabel6.setText("Login *");
 
-        jLabel7.setText("Senha*");
+        txtLogin.setEnabled(false);
+
+        jLabel7.setText("Senha *");
 
         txtSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +144,7 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
             }
         });
 
+        cbxDepartamento.setEnabled(false);
         cbxDepartamento.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 cbxDepartamentoMouseMoved(evt);
@@ -157,10 +161,11 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
             }
         });
 
-        jLabel8.setText("Departamento*");
+        jLabel8.setText("Departamento *");
 
         txtCargo.setEditable(false);
         txtCargo.setText("Gerente");
+        txtCargo.setEnabled(false);
         txtCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCargoActionPerformed(evt);
@@ -173,7 +178,11 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
         txtSalario.setText("3000");
         txtSalario.setEnabled(false);
 
-        jLabel10.setText("* Campos Obrigatorios");
+        txtCodigo.setEnabled(false);
+
+        jLabel10.setText("Código");
+
+        jLabel11.setText("* Campos Obrigatorios");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -182,6 +191,16 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9)
+                            .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel10))
+                        .addGap(0, 22, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(txtCargo, javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,27 +218,22 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
                             .addComponent(txtLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                             .addComponent(cbxDepartamento, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel10)
-                        .addGap(101, 101, 101))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, 402, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5)
-                            .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 37, Short.MAX_VALUE))))
+                        .addComponent(jLabel11)
+                        .addGap(44, 44, 44))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(7, 7, 7)
+                .addComponent(jLabel10)
+                .addGap(2, 2, 2)
+                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(3, 3, 3)
                 .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
@@ -227,7 +241,7 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
                 .addComponent(txtRg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
@@ -237,23 +251,23 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
+                .addComponent(txtSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(3, 3, 3)
+                .addComponent(jLabel6)
+                .addGap(4, 4, 4)
+                .addComponent(txtLogin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSalvar)
-                    .addComponent(jLabel10))
-                .addGap(33, 33, 33))
+                    .addComponent(jLabel11))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -267,12 +281,13 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
 
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalvarActionPerformed
         try {
-            camposObrigatorios();
+            Gerente gerenteAntigo = gerente;
             lerDadosTela();
+            camposObrigatorios();
             GerenteBO gerenteBO = new GerenteBO();
-            gerenteBO.inserir(gerente);
-            String mensagem = "Gerente Cadastrado com Sucesso!";
-            String titulo = "Cadastro de Gerente";
+            gerenteBO.alterar(gerente);
+            String mensagem = "Dados Alterados com Sucesso!";
+            String titulo = "Alteração de dados de Gerente";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.INFORMATION_MESSAGE);
         }catch(CamposObrigatoriosException ex){
             String titulo = "Erro Alterar ao Alterar de Gerente";
@@ -280,27 +295,28 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(TelaCadastroDepartamento.class.getName()).log(Level.SEVERE, null, ex);
         } catch (DepartamentoJaContemGerenteException ex) {
-            String titulo = "Erro ao Cadastrar Gerente";
+            String titulo = "Erro Alterar ao Alterar de Gerente";
             String mensagem = "Departamento já contem Gerente Desgninado!";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(TelaCadastroGerente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaAlterarGerente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (CPFJaCadastradoException ex) {
-            String titulo = "Erro ao Cadastrar Gerente";
+            String titulo = "Erro Alterar ao Alterar de Gerente";
             String mensagem = "CPF de Gerente Ja Cadastrado em um Departamento!";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(TelaCadastroGerente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaAlterarGerente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UsuarioJaCadatradoException ex) {
-            String titulo = "Erro ao Cadastrar Gerente";
+            String titulo = "Erro Alterar ao Alterar de Gerente";
             String mensagem = "Nome de Usuário Ja Cadastrado!";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(TelaCadastroGerente.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(TelaAlterarGerente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception e) {
-            String titulo = "Erro ao Cadastrar Gerente!";
+            String titulo = "Erro Alterar ao Alterar de Gerente";
             String mensagem = "Ocorreu um erro inesperado, Favor entra em contato com o administrador";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
-            Logger.getLogger(TelaCadastroGerente.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(TelaAlterarGerente.class.getName()).log(Level.SEVERE, null, e);
         }
 
+// TODO add your handling code here:
 // TODO add your handling code here:
     }//GEN-LAST:event_btnSalvarActionPerformed
 
@@ -345,6 +361,7 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
     private javax.swing.JComboBox cbxDepartamento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -354,6 +371,7 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtCargo;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JFormattedTextField txtCpf;
     private javax.swing.JFormattedTextField txtDataNascimento;
     private javax.swing.JTextField txtLogin;
@@ -367,11 +385,22 @@ public class TelaCadastroGerente extends javax.swing.JPanel implements AbaSeleci
     public void OnAbaSelecionada() {
         cbxDepartamento.removeAllItems();
         carregarListaDepartamento();
+        txtNome.setText(gerente.getNome());
+        txtCpf.setText(gerente.getCpf());
+        txtRg.setText(gerente.getRg());
+        String formato = "dd/MM/yyyy";
+        String date = new SimpleDateFormat(formato).format(gerente.getDataNascimento());
+        txtDataNascimento.setText(date);
+        txtLogin.setText(gerente.getUsuario());
+        cbxDepartamento.setSelectedItem(gerente.getDepartamento().getArea());
+        txtCodigo.setText(String.valueOf(gerente.getId()));
     }
+
     private void camposObrigatorios() {
         if (txtNome.getText().isEmpty() || txtCpf.getText().isEmpty()
                 || txtRg.getText().isEmpty() || txtDataNascimento.getText().isEmpty()
                 || txtLogin.getText().isEmpty() || txtSenha.getText().isEmpty()|| cbxDepartamento.getModel().getSize()==0) {
             throw new CamposObrigatoriosException();
-        }}
+        }
+    }
 }

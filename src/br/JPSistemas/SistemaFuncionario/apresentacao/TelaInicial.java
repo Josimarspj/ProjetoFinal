@@ -65,7 +65,7 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuSair.setVisible(false);
         telaCadastroCargo = new TelaCadastroCargo();
         telaCadastroDepartamento = new TelaCadastroDepartamento();
-        telaCadastroGerente = new TelaCadastroGerente();
+        telaCadastroGerente = new TelaCadastroGerente(this);
         telaCadastroFuncionario = new TelaCadastroFuncionario();
         telaRelatorioFuncionarioCargo = new TelaRelatorioFuncionarioCargo();
         telaRelatorioCargoDepartamento = new TelaRelatorioCargoDepartamento();
@@ -110,7 +110,9 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuCadastroCargo = new javax.swing.JMenuItem();
         mnuCadastroFuncionario = new javax.swing.JMenuItem();
         mnuCadastroDepartamento = new javax.swing.JMenuItem();
-        mnuCadastroGerente = new javax.swing.JMenuItem();
+        mnuCadastroGerente = new javax.swing.JMenu();
+        mnuCadastrarGerente = new javax.swing.JMenuItem();
+        mnuAlterarDadosGerente = new javax.swing.JMenuItem();
         mnuRelatorios = new javax.swing.JMenu();
         mnuRelatoriosFuncionarios = new javax.swing.JMenuItem();
         mnuRelatoriosCargos = new javax.swing.JMenuItem();
@@ -221,6 +223,23 @@ public class TelaInicial extends javax.swing.JFrame {
                 mnuCadastroGerenteActionPerformed(evt);
             }
         });
+
+        mnuCadastrarGerente.setText("Cadastrar");
+        mnuCadastrarGerente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuCadastrarGerenteActionPerformed(evt);
+            }
+        });
+        mnuCadastroGerente.add(mnuCadastrarGerente);
+
+        mnuAlterarDadosGerente.setText("Alterar Dados");
+        mnuAlterarDadosGerente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAlterarDadosGerenteActionPerformed(evt);
+            }
+        });
+        mnuCadastroGerente.add(mnuAlterarDadosGerente);
+
         mnuCadastro.add(mnuCadastroGerente);
 
         mnuPrincipal.add(mnuCadastro);
@@ -272,6 +291,11 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuConsulta.add(mnuAlterarFuncionario);
 
         mnuAlterarGerente.setText("Gerente");
+        mnuAlterarGerente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mnuAlterarGerenteActionPerformed(evt);
+            }
+        });
         mnuConsulta.add(mnuAlterarGerente);
 
         mnuPrincipal.add(mnuConsulta);
@@ -367,12 +391,6 @@ public class TelaInicial extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_tpPrincipalStateChanged
 
-    private void mnuCadastroGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastroGerenteActionPerformed
-        adicionarTab("Cadastro de Gerente", telaCadastroGerente);
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_mnuCadastroGerenteActionPerformed
-
     private void mnuRelatoriosFuncionariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuRelatoriosFuncionariosActionPerformed
         adicionarTab("Relatorio de Funcionários", telaRelatorioFuncionarioCargo);
         // TODO add your handling code here:
@@ -466,6 +484,23 @@ public class TelaInicial extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_munGraficoCargoDepartamentoActionPerformed
 
+    private void mnuAlterarGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAlterarGerenteActionPerformed
+
+    }//GEN-LAST:event_mnuAlterarGerenteActionPerformed
+
+    private void mnuCadastrarGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrarGerenteActionPerformed
+        adicionarTab("Cadastro de Gerente", telaCadastroGerente);
+    }//GEN-LAST:event_mnuCadastrarGerenteActionPerformed
+
+    private void mnuAlterarDadosGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAlterarDadosGerenteActionPerformed
+        TelaPesquisarCPF telaPesquisarCPF = new TelaPesquisarCPF(this);
+        telaPesquisarCPF.setVisible(true);
+    }//GEN-LAST:event_mnuAlterarDadosGerenteActionPerformed
+
+    private void mnuCadastroGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastroGerenteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mnuCadastroGerenteActionPerformed
+
     public void adicionarTab(String titulo, JPanel tela) {
         tpPrincipal.addTab(titulo, tela);
         tpPrincipal.setSelectedComponent(tela);
@@ -511,14 +546,16 @@ public class TelaInicial extends javax.swing.JFrame {
     public javax.swing.JButton btnSair;
     public javax.swing.JLabel lbNomeLogin;
     public javax.swing.JMenuItem mnuAlterarCargo;
+    private javax.swing.JMenuItem mnuAlterarDadosGerente;
     public javax.swing.JMenuItem mnuAlterarDepartamento;
     private javax.swing.JMenuItem mnuAlterarFuncionario;
     public javax.swing.JMenuItem mnuAlterarGerente;
+    private javax.swing.JMenuItem mnuCadastrarGerente;
     public javax.swing.JMenu mnuCadastro;
     public javax.swing.JMenuItem mnuCadastroCargo;
     public javax.swing.JMenuItem mnuCadastroDepartamento;
     private javax.swing.JMenuItem mnuCadastroFuncionario;
-    public javax.swing.JMenuItem mnuCadastroGerente;
+    public javax.swing.JMenu mnuCadastroGerente;
     public javax.swing.JMenu mnuConsulta;
     public javax.swing.JMenu mnuGraficos;
     public javax.swing.JMenuItem mnuLogin;

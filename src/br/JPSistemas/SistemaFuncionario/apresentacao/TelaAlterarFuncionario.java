@@ -184,7 +184,7 @@ public class TelaAlterarFuncionario extends javax.swing.JPanel implements AbaSel
             }
         });
 
-        jLabel8.setText("Departamento");
+        jLabel8.setText("Departamento*");
 
         jLabel6.setText("* Campos Obrigatórios");
 
@@ -335,19 +335,19 @@ public class TelaAlterarFuncionario extends javax.swing.JPanel implements AbaSel
     }//GEN-LAST:event_cbxDepartamentoMouseDragged
 
     private void cbxDepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxDepartamentoActionPerformed
-        
+
     }//GEN-LAST:event_cbxDepartamentoActionPerformed
 
     private void cbxDepartamentoComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_cbxDepartamentoComponentShown
-        
+
     }//GEN-LAST:event_cbxDepartamentoComponentShown
 
     private void cbxDepartamentoAncestorMoved1(java.awt.event.HierarchyEvent evt) {//GEN-FIRST:event_cbxDepartamentoAncestorMoved1
-        
+
     }//GEN-LAST:event_cbxDepartamentoAncestorMoved1
 
     private void cbxDepartamentoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbxDepartamentoMouseEntered
-      
+
     }//GEN-LAST:event_cbxDepartamentoMouseEntered
 
     private void cbxDepartamentoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbxDepartamentoItemStateChanged
@@ -420,15 +420,15 @@ public class TelaAlterarFuncionario extends javax.swing.JPanel implements AbaSel
         String formato = "dd/MM/yyyy";
         String date = new SimpleDateFormat(formato).format(funcionario.getDataNascimento());
         txtDataNascimento.setText(date);
-        cbxDepartamento.setSelectedItem(funcionario.getCargo().getDepartamento());
-        cbxCargo.setSelectedItem(funcionario.getCargo());
+        cbxDepartamento.setSelectedItem(funcionario.getCargo().getDepartamento().getArea());
+        cbxCargo.setSelectedItem(funcionario.getCargo().getNome());
         txtCodigo.setText(String.valueOf(funcionario.getId()));
-
     }
 
     private void camposObrigatorios() {
         if (txtNome.getText().isEmpty() || txtCpf.getText().isEmpty()
-                || txtRg.getText().isEmpty() || txtDataNascimento.getText().isEmpty()) {
+                || txtRg.getText().isEmpty() || txtDataNascimento.getText().isEmpty()
+                || cbxDepartamento.getModel().getSize() == 0 || cbxCargo.getModel().getSize() == 0) {
             throw new CamposObrigatoriosException();
         }
     }

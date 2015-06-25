@@ -11,6 +11,7 @@ import br.JPSistemas.SistemaFuncionario.entidade.Gerente;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 /**
  *
@@ -59,7 +60,7 @@ public class GerenteBO {
         DepartamentoDAO departamentoDAO = new DepartamentoDAO();
         GerenteDAO gerenteDAO = new GerenteDAO();
         if (departamentoDAO.buscarPorGerente(gerente) == null) {
-            if (gerenteDAO.procurarPorCpf(gerente)==null) {
+            if (gerenteDAO.procurarPorCpf(gerente) == null) {
                 if (gerenteDAO.procurarPorUsuario(gerente) == null) {
                     String senha = senhaMD5(gerente.getSenha());
                     gerente.setSenha(senha);
@@ -67,12 +68,32 @@ public class GerenteBO {
                 } else {
                     throw new UsuarioJaCadatradoException();
                 }
-            }else{
+            } else {
                 throw new CPFJaCadastradoException();
             }
 
         } else {
             throw new DepartamentoJaContemGerenteException();
         }
+    }
+
+    public Gerente buscarPorCPF(Gerente gerente) throws Exception {
+        GerenteDAO gerenteDAO = new GerenteDAO();
+        Gerente gerente1 = gerenteDAO.procurarPorCpf(gerente);
+        if (gerente1 != null) {
+            return gerente1;
+        } else {
+            throw new UsuarioInvalidoException();
+        }
+    }
+
+    public void alterar(Gerente gerente) throws Exception {
+        DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+        GerenteDAO gerenteDAO = new GerenteDAO();
+        gerenteDAO.alterar(gerente);
+    }
+
+    public List<Gerente> buscarTodos() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

@@ -247,7 +247,7 @@ public class TelaAlterarCargo extends javax.swing.JPanel implements AbaSeleciona
     // End of variables declaration//GEN-END:variables
 
     private void camposObrigatorios(){
-        if(txtNome.getText().isEmpty() || txtSalario.getText().isEmpty()){
+        if(txtNome.getText().isEmpty() || txtSalario.getText().isEmpty()||cbxDepartamento.getModel().getSize()==0){
             throw  new CamposObrigatoriosException();
         }
     }
@@ -258,7 +258,7 @@ public class TelaAlterarCargo extends javax.swing.JPanel implements AbaSeleciona
         txtNome.setText(cargo.getNome());
         DecimalFormat formatador = new DecimalFormat("#,##0.00");
         txtSalario.setText(formatador.format(cargo.getSalario()));
-        cbxDepartamento.setSelectedItem(cargo.getDepartamento());
+        cbxDepartamento.setSelectedItem(cargo.getDepartamento().getArea());
         txtCodigo.setText(String.valueOf(cargo.getId()));
     }
 }

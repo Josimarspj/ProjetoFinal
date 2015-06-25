@@ -29,7 +29,7 @@ public class FuncionarioDAO {
     private static final String SQL_EXCLUIR_POR_ID = "DELETE FROM FUNCIONARIO WHERE ID= ?";
     private static final String SQL_ALTERAR_SALARIO = "UPDATE FUNCIONARIO SET SALARIO= ? WHERE ID_CARGO=?";
     private static final String SQL_ALTERAR = "UPDATE FUNCIONARIO SET NOME=?,CPF=?,RG=?,SALARIO=?,DATA_NASC=?,ID_CARGO=? WHERE ID=?";
-    
+
     public void inserir(Funcionario funcionario) throws SQLException {
         Connection conexao = null;
         PreparedStatement comando = null;
@@ -196,7 +196,6 @@ public class FuncionarioDAO {
     public void excluir(Funcionario funcionario) throws SQLException {
         Connection conexao = null;
         PreparedStatement comando = null;
-        ResultSet resultado = null;
         try {
             conexao = BancoDadosUtil.getConnection();
             comando = conexao.prepareStatement(SQL_EXCLUIR_POR_ID);
@@ -215,9 +214,7 @@ public class FuncionarioDAO {
             if (comando != null && !comando.isClosed()) {
                 comando.close();
             }
-            if (resultado != null && !resultado.isClosed()) {
-                resultado.close();
-            }
+
         }
     }
 
@@ -236,8 +233,6 @@ public class FuncionarioDAO {
         }
     }
 
-    
-
     public void alterar(Funcionario funcionario) throws SQLException {
         Connection conexao = null;
         PreparedStatement comando = null;
@@ -251,7 +246,7 @@ public class FuncionarioDAO {
             Date date = new Date(funcionario.getDataNascimento().getTime());
             comando.setDate(5, date);
             comando.setInt(6, funcionario.getCargo().getId());
-            comando.setInt(7,funcionario.getId());
+            comando.setInt(7, funcionario.getId());
             comando.execute();
             conexao.commit();
         } catch (Exception e) {
@@ -266,7 +261,7 @@ public class FuncionarioDAO {
             if (comando != null && !comando.isClosed()) {
                 comando.close();
             }
+        }
+
     }
-    
-}
 }

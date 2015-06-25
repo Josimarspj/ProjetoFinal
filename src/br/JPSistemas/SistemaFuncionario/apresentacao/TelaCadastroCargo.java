@@ -216,7 +216,7 @@ public class TelaCadastroCargo extends javax.swing.JPanel implements AbaSelecion
     // End of variables declaration//GEN-END:variables
 
     private void camposObrigatorios(){
-        if(txtNome.getText().isEmpty() || txtSalario.getText().isEmpty()){
+        if(txtNome.getText().isEmpty() || txtSalario.getText().isEmpty()||cbxDepartamento.getModel().getSize()==0){
             throw  new CamposObrigatoriosException();
         }
     }
