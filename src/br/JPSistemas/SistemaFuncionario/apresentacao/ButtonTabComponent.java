@@ -5,9 +5,9 @@
  */
 package br.JPSistemas.SistemaFuncionario.apresentacao;
 
-import javax.swing.*;  
-import javax.swing.plaf.basic.BasicButtonUI;  
-import java.awt.*;  
+import javax.swing.*;
+import javax.swing.plaf.basic.BasicButtonUI;
+import java.awt.*;
 import java.awt.event.*;
 
 /**
@@ -18,7 +18,7 @@ public class ButtonTabComponent extends JPanel {
 
     private final JTabbedPane pane;
 
-      //  
+    //  
     //CONSTRUTOR  
     //  
     //Início...  
@@ -52,7 +52,7 @@ public class ButtonTabComponent extends JPanel {
         setBorder(BorderFactory.createEmptyBorder(2, 0, 0, 0));
     }//Fim do construtor.  
 
-      //  
+    //  
     //CLASSE TABBUTTON  
     //  
     //Define as características do botão fechar.  
@@ -60,24 +60,33 @@ public class ButtonTabComponent extends JPanel {
     //Início  
     private class TabButton extends JButton implements ActionListener {
 
+
         public TabButton() {
             int size = 17;
             setPreferredSize(new Dimension(size, size));
             setToolTipText("Fechar esta aba!");
+            
             //Faz o botão ser igual para todas as Laf's  
-            setUI(new BasicButtonUI());
+            setUI(
+                    new BasicButtonUI());
             //Torna-o transparente  
-            setContentAreaFilled(false);
+            setContentAreaFilled(
+                    false);
             //Não necessidade de estar com focusable  
-            setFocusable(false);
+            setFocusable(
+                    false);
             setBorder(BorderFactory.createEtchedBorder());
-            setBorderPainted(false);
+            setBorderPainted(
+                    false);
             //Fazendo um efeito de rolagem  
             //usamos o mesmo listener para todos os botões  
             addMouseListener(buttonMouseListener);
-            setRolloverEnabled(true);
+
+            setRolloverEnabled(
+                    true);
             //Fecha a guia apropriada, clicando no botão  
-            addActionListener(this);
+            addActionListener(
+                    this);
         }
 
         @Override
@@ -108,15 +117,14 @@ public class ButtonTabComponent extends JPanel {
             g2.dispose();
         }
 
-       
     }//Fim da classe TabButton.  
 
       //  
-    //MOUSELISTENER  
-    //  
-    //Define os eventos de entrada e saida do mouse.  
-    //  
-    //Início...  
+//MOUSELISTENER  
+//  
+//Define os eventos de entrada e saida do mouse.  
+//  
+//Início...  
     private final static MouseListener buttonMouseListener = new MouseAdapter() {
         public void mouseEntered(MouseEvent e) {
             Component component = e.getComponent();

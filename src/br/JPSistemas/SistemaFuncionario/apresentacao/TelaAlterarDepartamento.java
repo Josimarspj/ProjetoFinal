@@ -50,6 +50,7 @@ public class TelaAlterarDepartamento extends javax.swing.JPanel implements AbaSe
 
         lbArea.setText("Area *");
 
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/disk.png"))); // NOI18N
         btnSalvar.setText("Alterar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

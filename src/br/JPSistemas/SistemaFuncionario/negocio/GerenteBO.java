@@ -11,6 +11,8 @@ import br.JPSistemas.SistemaFuncionario.entidade.Gerente;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -93,7 +95,18 @@ public class GerenteBO {
         gerenteDAO.alterar(gerente);
     }
 
-    public List<Gerente> buscarTodos() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Gerente> buscarTodos() throws Exception {
+        List<Gerente> gerentes = new ArrayList<Gerente>();
+        GerenteDAO gerenteDAO = new GerenteDAO();
+        gerentes = gerenteDAO.buscarTodos();
+        if (gerentes.size() == 0) {
+            throw new ListaGerenteVaziaException();
+        }
+        return gerentes;
+    }
+
+    public void excluir(Gerente gerente) throws Exception {
+        GerenteDAO gerenteDAO = new GerenteDAO();
+        gerenteDAO.excluir(gerente);
     }
 }

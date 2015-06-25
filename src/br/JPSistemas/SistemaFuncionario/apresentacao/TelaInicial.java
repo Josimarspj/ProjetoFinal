@@ -43,6 +43,7 @@ public class TelaInicial extends javax.swing.JFrame {
     TelaRelatorioCargoDepartamento telaRelatorioCargoDepartamento;
     TelaConsultaDepartamento telaConsultaDepartamento;
     TelaConsultaCargo telaConsultaCargo;
+    TelaConsultaGerente telaConsultaGerente;
     public TelaConsultaFuncionario telaConsultaFuncionario;
     public Gerente gerente;
     public Diretor diretor;
@@ -72,6 +73,7 @@ public class TelaInicial extends javax.swing.JFrame {
         telaConsultaDepartamento = new TelaConsultaDepartamento(this);
         telaConsultaCargo = new TelaConsultaCargo(this);
         telaConsultaFuncionario = new TelaConsultaFuncionario(this);
+        telaConsultaGerente = new TelaConsultaGerente(this);
         telaLogin = new TelaLogin(this);
         gerente = null;
         diretor = null;
@@ -138,8 +140,10 @@ public class TelaInicial extends javax.swing.JFrame {
 
         plnLogin.setBorder(javax.swing.BorderFactory.createTitledBorder("Usuário"));
 
+        lbNomeLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/status_online.png"))); // NOI18N
         lbNomeLogin.setText("Nome");
 
+        btnSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/door_out.png"))); // NOI18N
         btnSair.setText("Sair");
         btnSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,7 +157,7 @@ public class TelaInicial extends javax.swing.JFrame {
             plnLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(plnLoginLayout.createSequentialGroup()
                 .addComponent(lbNomeLogin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSair))
         );
         plnLoginLayout.setVerticalGroup(
@@ -170,8 +174,10 @@ public class TelaInicial extends javax.swing.JFrame {
         mnuPrincipal.setMaximumSize(new java.awt.Dimension(400, 32769));
         mnuPrincipal.setPreferredSize(new java.awt.Dimension(267, 30));
 
-        mnuUsuario.setText("Usuario");
+        mnuUsuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user.png"))); // NOI18N
+        mnuUsuario.setText("Usuário");
 
+        mnuLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_go.png"))); // NOI18N
         mnuLogin.setText("Login");
         mnuLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +186,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuUsuario.add(mnuLogin);
 
+        mnuSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/door_out.png"))); // NOI18N
         mnuSair.setText("Sair");
         mnuSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -190,9 +197,10 @@ public class TelaInicial extends javax.swing.JFrame {
 
         mnuPrincipal.add(mnuUsuario);
 
-        mnuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/application_form_add.png"))); // NOI18N
+        mnuCadastro.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/application_form_add.png"))); // NOI18N
         mnuCadastro.setText("Cadastro");
 
+        mnuCadastroCargo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/paste_plain.png"))); // NOI18N
         mnuCadastroCargo.setText("Cargo");
         mnuCadastroCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -201,6 +209,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuCadastro.add(mnuCadastroCargo);
 
+        mnuCadastroFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_add.png"))); // NOI18N
         mnuCadastroFuncionario.setText("Funcionário");
         mnuCadastroFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,6 +218,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuCadastro.add(mnuCadastroFuncionario);
 
+        mnuCadastroDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/chart_organisation_add.png"))); // NOI18N
         mnuCadastroDepartamento.setText("Departamento");
         mnuCadastroDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -217,6 +227,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuCadastro.add(mnuCadastroDepartamento);
 
+        mnuCadastroGerente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_suit.png"))); // NOI18N
         mnuCadastroGerente.setText("Gerente");
         mnuCadastroGerente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,6 +235,7 @@ public class TelaInicial extends javax.swing.JFrame {
             }
         });
 
+        mnuCadastrarGerente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/add.png"))); // NOI18N
         mnuCadastrarGerente.setText("Cadastrar");
         mnuCadastrarGerente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,6 +244,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuCadastroGerente.add(mnuCadastrarGerente);
 
+        mnuAlterarDadosGerente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/action_refresh.gif"))); // NOI18N
         mnuAlterarDadosGerente.setText("Alterar Dados");
         mnuAlterarDadosGerente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -244,6 +257,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         mnuPrincipal.add(mnuCadastro);
 
+        mnuRelatorios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/file_acrobat.gif"))); // NOI18N
         mnuRelatorios.setText("Relatorios");
 
         mnuRelatoriosFuncionarios.setText("Relatorios de Funcionários por Cargo");
@@ -264,6 +278,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         mnuPrincipal.add(mnuRelatorios);
 
+        mnuConsulta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/application_view_list.png"))); // NOI18N
         mnuConsulta.setText("Consulta");
 
         mnuAlterarCargo.setText("Cargos");
@@ -274,6 +289,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuConsulta.add(mnuAlterarCargo);
 
+        mnuAlterarDepartamento.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/chart_organisation.png"))); // NOI18N
         mnuAlterarDepartamento.setText("Departamentos");
         mnuAlterarDepartamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -282,6 +298,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuConsulta.add(mnuAlterarDepartamento);
 
+        mnuAlterarFuncionario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/group.png"))); // NOI18N
         mnuAlterarFuncionario.setText("Funcionarios");
         mnuAlterarFuncionario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,7 +307,7 @@ public class TelaInicial extends javax.swing.JFrame {
         });
         mnuConsulta.add(mnuAlterarFuncionario);
 
-        mnuAlterarGerente.setText("Gerente");
+        mnuAlterarGerente.setText("Gerentes");
         mnuAlterarGerente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mnuAlterarGerenteActionPerformed(evt);
@@ -300,6 +317,7 @@ public class TelaInicial extends javax.swing.JFrame {
 
         mnuPrincipal.add(mnuConsulta);
 
+        mnuGraficos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/chart_pie.png"))); // NOI18N
         mnuGraficos.setText("Gráficos");
 
         munGraficoFuncionarioCargo.setText("Gráfico de Funcionarios por Cargo");
@@ -485,7 +503,7 @@ public class TelaInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_munGraficoCargoDepartamentoActionPerformed
 
     private void mnuAlterarGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuAlterarGerenteActionPerformed
-
+        adicionarTab("Gerentes Cadastrados", telaConsultaGerente);
     }//GEN-LAST:event_mnuAlterarGerenteActionPerformed
 
     private void mnuCadastrarGerenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mnuCadastrarGerenteActionPerformed

@@ -6,7 +6,6 @@
 package br.JPSistemas.SistemaFuncionario.apresentacao;
 
 import br.JPSistemas.SistemaFuncionario.entidade.Funcionario;
-import br.JPSistemas.SistemaFuncionario.entidade.Funcionario;
 import br.JPSistemas.SistemaFuncionario.negocio.FuncionarioBO;
 import br.JPSistemas.SistemaFuncionario.negocio.ListaFuncionariosVaziaException;
 import java.text.DecimalFormat;
@@ -76,6 +75,7 @@ public class TelaConsultaFuncionario extends javax.swing.JPanel implements AbaSe
         });
         jScrollPane1.setViewportView(tblFuncionarios);
 
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_edit.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -83,6 +83,7 @@ public class TelaConsultaFuncionario extends javax.swing.JPanel implements AbaSe
             }
         });
 
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_delete.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

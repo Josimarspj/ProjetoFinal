@@ -14,11 +14,17 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="mnuUsuario">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Usuario"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user.png"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Usu&#xe1;rio"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnuLogin">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_go.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Login"/>
               </Properties>
               <Events>
@@ -30,6 +36,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuSair">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/door_out.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Sair"/>
               </Properties>
               <Events>
@@ -44,7 +53,7 @@
         <Menu class="javax.swing.JMenu" name="mnuCadastro">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/application_form_add.png"/>
+              <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/application_form_add.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cadastro"/>
           </Properties>
@@ -54,6 +63,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="mnuCadastroCargo">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/paste_plain.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cargo"/>
               </Properties>
               <Events>
@@ -65,6 +77,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuCadastroFuncionario">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_add.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Funcion&#xe1;rio"/>
               </Properties>
               <Events>
@@ -73,6 +88,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuCadastroDepartamento">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/chart_organisation_add.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Departamento"/>
               </Properties>
               <Events>
@@ -84,6 +102,9 @@
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="mnuCadastroGerente">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_suit.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Gerente"/>
               </Properties>
               <Events>
@@ -95,6 +116,9 @@
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="mnuCadastrarGerente">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/add.png"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Cadastrar"/>
                   </Properties>
                   <Events>
@@ -103,6 +127,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="mnuAlterarDadosGerente">
                   <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/action_refresh.gif"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Alterar Dados"/>
                   </Properties>
                   <Events>
@@ -115,6 +142,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuRelatorios">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/file_acrobat.gif"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Relatorios"/>
           </Properties>
           <AuxValues>
@@ -144,6 +174,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuConsulta">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/application_view_list.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Consulta"/>
           </Properties>
           <AuxValues>
@@ -163,6 +196,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuAlterarDepartamento">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/chart_organisation.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Departamentos"/>
               </Properties>
               <Events>
@@ -174,6 +210,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuAlterarFuncionario">
               <Properties>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/group.png"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Funcionarios"/>
               </Properties>
               <Events>
@@ -182,7 +221,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="mnuAlterarGerente">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Gerente"/>
+                <Property name="text" type="java.lang.String" value="Gerentes"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mnuAlterarGerenteActionPerformed"/>
@@ -195,6 +234,9 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="mnuGraficos">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/chart_pie.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Gr&#xe1;ficos"/>
           </Properties>
           <AuxValues>
@@ -294,7 +336,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="lbNomeLogin" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="16" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Component id="btnSair" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -316,6 +358,9 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lbNomeLogin">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/status_online.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Nome"/>
           </Properties>
           <AuxValues>
@@ -324,6 +369,9 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnSair">
           <Properties>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/br/JPSistemas/SistemaFuncionario/apresentacao/icones/door_out.png"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Sair"/>
           </Properties>
           <Events>

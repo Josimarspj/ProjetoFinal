@@ -125,6 +125,7 @@ public class TelaAlterarGerente extends javax.swing.JPanel implements AbaSelecio
 
         jLabel5.setText("Cargo*");
 
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/disk.png"))); // NOI18N
         btnSalvar.setText("Alterar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -175,7 +176,7 @@ public class TelaAlterarGerente extends javax.swing.JPanel implements AbaSelecio
         jLabel9.setText("Salario");
 
         txtSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        txtSalario.setText("3000");
+        txtSalario.setText("3.000");
         txtSalario.setEnabled(false);
 
         txtCodigo.setEnabled(false);
@@ -289,6 +290,7 @@ public class TelaAlterarGerente extends javax.swing.JPanel implements AbaSelecio
             String mensagem = "Dados Alterados com Sucesso!";
             String titulo = "Alteração de dados de Gerente";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.INFORMATION_MESSAGE);
+            inicial.tpPrincipal.remove(inicial.tpPrincipal.getSelectedIndex());
         }catch(CamposObrigatoriosException ex){
             String titulo = "Erro Alterar ao Alterar de Gerente";
             String mensagem = "Campo(s) Obrigatório(s) Não Preenchido(s)!";

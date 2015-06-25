@@ -27,7 +27,7 @@ public class TelaConsultaGerente extends javax.swing.JPanel implements AbaSeleci
 
     List<Gerente> gerentes;
     TelaInicial inicial;
-    TelaAlterarFuncionario telaAlterarFuncionario;
+    TelaAlterarGerente telaAlterarGerente;
     /**
      * Creates new form TelaRelatorioFuncionarioFuncionario
      */
@@ -77,6 +77,7 @@ public class TelaConsultaGerente extends javax.swing.JPanel implements AbaSeleci
         });
         jScrollPane1.setViewportView(tblGerentes);
 
+        btnAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_edit.png"))); // NOI18N
         btnAlterar.setText("Alterar");
         btnAlterar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,6 +85,7 @@ public class TelaConsultaGerente extends javax.swing.JPanel implements AbaSeleci
             }
         });
 
+        btnExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/user_delete.png"))); // NOI18N
         btnExcluir.setText("Excluir");
         btnExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,20 +119,20 @@ public class TelaConsultaGerente extends javax.swing.JPanel implements AbaSeleci
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         try {
             int linhaSelecionada = this.tblGerentes.getSelectedRow();
-            Funcionario funcionario = this.gerentes.get(linhaSelecionada);
-            String mensagem = "Deseja Excluir Funcionario " + funcionario.getNome() + "?";
-            String titulo = "Excluir Funcionario";
+            Gerente gerente = this.gerentes.get(linhaSelecionada);
+            String mensagem = "Deseja Excluir Gerente " + gerente.getNome() + "?";
+            String titulo = "Excluir Gerente";
             int resultado = JOptionPane.showConfirmDialog(this, mensagem, titulo, JOptionPane.YES_NO_OPTION);
             if (resultado == JOptionPane.YES_OPTION) {
-                FuncionarioBO funcionarioBO = new FuncionarioBO();
-                funcionarioBO.excluir(funcionario);
-                titulo = "Excluir Funcionário";
-                mensagem = "Funcionario Excluido com Sucesso!";
+                GerenteBO gerenteBO = new GerenteBO();
+                gerenteBO.excluir(gerente);
+                titulo = "Excluir Gerente";
+                mensagem = "Gerente Excluido com Sucesso!";
                 JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.INFORMATION_MESSAGE);
                 exibirDadosTabela();
             }
         } catch (Exception ex) {
-            String titulo = "Excluir Funcionário!";
+            String titulo = "Excluir Gerente!";
             String mensagem = "Ocorreu um erro inesperado, Favor entra em contato com o administrador";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(TelaConsultaGerente.class.getName()).log(Level.SEVERE, null, ex);
@@ -139,9 +141,9 @@ public class TelaConsultaGerente extends javax.swing.JPanel implements AbaSeleci
 
     private void btnAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAlterarActionPerformed
         int linhaSelecionada = this.tblGerentes.getSelectedRow();
-        Funcionario funcionario = this.gerentes.get(linhaSelecionada);
-        telaAlterarFuncionario = new TelaAlterarFuncionario(funcionario,inicial);
-        inicial.adicionarTab("Alterar Funcionario", telaAlterarFuncionario);
+        Gerente gerente = this.gerentes.get(linhaSelecionada);
+        telaAlterarGerente = new TelaAlterarGerente(gerente,inicial);
+        inicial.adicionarTab("Alterar Gerente", telaAlterarGerente);
        
     }//GEN-LAST:event_btnAlterarActionPerformed
 
@@ -155,12 +157,12 @@ public class TelaConsultaGerente extends javax.swing.JPanel implements AbaSeleci
         } catch (ListaFuncionariosVaziaException ex) {
             btnExcluir.setEnabled(false);
             btnAlterar.setEnabled(false);
-            String titulo = "Lista de Funcionarios";
-            String mensagem = "Lista de Funcionarios Vazia!";
+            String titulo = "Lista de Gerentes";
+            String mensagem = "Lista de Gerentes Vazia!";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(TelaConsultaGerente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (Exception ex) {
-            String titulo = "Erro ao Carregar Lista de Funcionarios!";
+            String titulo = "Erro ao Carregar Lista de Gerente!";
             String mensagem = "Ocorreu um erro inesperado, Favor entra em contato com o administrador";
             JOptionPane.showMessageDialog(this, mensagem, titulo, JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(TelaConsultaGerente.class.getName()).log(Level.SEVERE, null, ex);
@@ -203,27 +205,27 @@ class ModeloDadosFuncionarios extends AbstractTableModel {
 
         @Override
         public int getColumnCount() {
-            return 7;
+            return 6;
         }
 
         @Override
         public Object getValueAt(int rowIndex, int columnIndex) {
-            Funcionario funcionario = gerentes.get(rowIndex);
+            Gerente gerente = gerentes.get(rowIndex);
             if (columnIndex == 0) {
-                return funcionario.getId();
+                return gerente.getId();
             } else if (columnIndex == 1) {
-                return funcionario.getNome();
+                return gerente.getNome();
             } else if (columnIndex == 2) {
-                return funcionario.getCpf();
+                return gerente.getCpf();
             } else if (columnIndex == 3) {
                 DecimalFormat formatador = new DecimalFormat("#,##0.00");
-                return formatador.format(funcionario.getSalario());
+                return formatador.format(gerente.getSalario());
             } else if (columnIndex == 4) {
                 String formato = "dd/MM/yyyy";
-                String date = new SimpleDateFormat(formato).format(funcionario.getDataNascimento());
+                String date = new SimpleDateFormat(formato).format(gerente.getDataNascimento());
                 return date;
             } else {
-                return funcionario.getCargo().getDepartamento().getArea();
+                return gerente.getDepartamento().getArea();
             }
         }
 

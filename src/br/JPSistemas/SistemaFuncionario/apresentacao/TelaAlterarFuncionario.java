@@ -118,6 +118,7 @@ public class TelaAlterarFuncionario extends javax.swing.JPanel implements AbaSel
 
         jLabel5.setText("Cargo");
 
+        btnSalvar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/disk.png"))); // NOI18N
         btnSalvar.setText("Alterar");
         btnSalvar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

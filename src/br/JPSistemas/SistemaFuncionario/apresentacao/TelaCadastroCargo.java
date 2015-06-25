@@ -76,6 +76,7 @@ public class TelaCadastroCargo extends javax.swing.JPanel implements AbaSelecion
 
         jLabel2.setText("Salario*");
 
+        btnSalvarCargo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/JPSistemas/SistemaFuncionario/apresentacao/icones/disk.png"))); // NOI18N
         btnSalvarCargo.setText("Salvar");
         btnSalvarCargo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,7 +137,7 @@ public class TelaCadastroCargo extends javax.swing.JPanel implements AbaSelecion
                     .addComponent(jLabel4))
                 .addGap(11, 11, 11)
                 .addComponent(btnSalvarCargo)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

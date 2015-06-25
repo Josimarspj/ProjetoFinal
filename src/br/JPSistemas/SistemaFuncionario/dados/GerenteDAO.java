@@ -5,14 +5,14 @@
  */
 package br.JPSistemas.SistemaFuncionario.dados;
 
-import br.JPSistemas.SistemaFuncionario.entidade.Diretor;
-import br.JPSistemas.SistemaFuncionario.entidade.Funcionario;
 import br.JPSistemas.SistemaFuncionario.entidade.Gerente;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -27,6 +27,8 @@ public class GerenteDAO {
     private static final String SQL_BUSCAR_POR_CPF = "SELECT ID,NOME,CPF,RG,SALARIO,DATA_NASC,ID_DEPARTAMENTO,USUARIO FROM GERENTE WHERE CPF=?";
     private static final String SQL_EXCLUIR_POR_ID = "DELETE FROM GERENTE WHERE ID= ?";
     private static final String SQL_ALTERAR = "UPDATE GERENTE SET NOME=?,RG=?,DATA_NASC=?,SENHA=? WHERE ID=?";
+    private static final String SQL_SELECT_TODOS = "SELECT NOME,CPF,ID_DEPARTAMENTO,SALARIO,DATA_NASC,ID,RG,USUARIO FROM GERENTE";
+
     public void inserir(Gerente gerente) throws SQLException {
         Connection conexao = null;
         PreparedStatement comando = null;
@@ -249,5 +251,43 @@ public class GerenteDAO {
                 comando.close();
             }
         }
+    }
+
+    public List<Gerente> buscarTodos() throws SQLException {
+        List<Gerente> gerentes = new ArrayList<Gerente>();
+        Connection conexao = null;
+        ResultSet resultado = null;
+        PreparedStatement comando = null;
+        try {
+            conexao = BancoDadosUtil.getConnection();
+            comando = conexao.prepareStatement(SQL_SELECT_TODOS);
+            resultado = comando.executeQuery();
+            while (resultado.next()) {
+                Gerente gerente = new Gerente();
+                gerente.setNome(resultado.getString(1));
+                gerente.setCpf(resultado.getString(2));
+                DepartamentoDAO departamentoDAO = new DepartamentoDAO();
+                gerente.setDepartamento(departamentoDAO.buscarPorID(resultado.getInt(3)));
+                gerente.setSalario(resultado.getDouble(4));
+                gerente.setDataNascimento(resultado.getDate(5));
+                gerente.setId(resultado.getInt(6));
+                gerente.setRg(resultado.getString(7));
+                gerente.setUsuario(resultado.getString(8));
+                gerentes.add(gerente);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (conexao != null && !conexao.isClosed()) {
+                conexao.close();
+            }
+            if (comando != null && !comando.isClosed()) {
+                comando.close();
+            }
+            if (resultado != null && !resultado.isClosed()) {
+                resultado.close();
+            }
+        }
+        return gerentes;
     }
 }
